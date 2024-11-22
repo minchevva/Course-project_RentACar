@@ -1,7 +1,6 @@
 
 # Rent-a-Car BMW API
-
-This project provides a Postman collection for a **Rent-a-Car system** focused on **BMW cars**. The API supports operations for managing cars, creating rental offers, and retrieving details about cars and offers.
+The API supports operations for managing cars, creating rental offers, and retrieving details about cars and offers.
 
 ## Features
 - **Manage Cars**: Add, update, list, and delete BMW cars by location.
