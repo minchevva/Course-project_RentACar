@@ -1,0 +1,594 @@
+{
+    "info": {
+        "_postman_id": "952821a4-1a97-4c22-8176-8e5bb8fe52f3",
+        "name": "RentACarApplication",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "38895494"
+    },
+    "item": [
+        {
+            "name": "Car",
+            "item": [
+                {
+                    "name": "Add car",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"BMW60\",\r\n  \"location\": \"София\",\r\n  \"pricePerDay\": 20000\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:8088/api/cars",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "cars"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "201 Created - BMW Added",
+                            "status": "Created",
+                            "code": 201,
+                            "body": "{\n  \"id\": 16,\n  \"name\": \"BMW X5\",\n  \"location\": \"София\",\n  \"pricePerDay\": 300.0,\n  \"status\": \"Available\"\n}",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Get all cars",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/cars",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "cars"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - Executed Example",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"BMW 3 Series\",\n    \"location\": \"София\",\n    \"pricePerDay\": 200.0\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Audi A4\",\n    \"location\": \"Пловдив\",\n    \"pricePerDay\": 150.0\n  }\n]",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Get cars by Id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/cars/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "cars",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - Executed Example",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"BMW 3 Series\",\n    \"location\": \"София\",\n    \"pricePerDay\": 200.0\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Audi A4\",\n    \"location\": \"Пловдив\",\n    \"pricePerDay\": 150.0\n  }\n]",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Get by location",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/cars/by-location?location=Пловдив",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "cars",
+                                "by-location"
+                            ],
+                            "query": [
+                                {
+                                    "key": "location",
+                                    "value": "Пловдив"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - BMW Cars in Bulgarian Locations",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"BMW 320d\",\n    \"location\": \"Пловдив\",\n    \"pricePerDay\": 150.0,\n    \"status\": \"Available\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"BMW X3\",\n    \"location\": \"София\",\n    \"pricePerDay\": 200.0,\n    \"status\": \"Available\"\n  }\n]",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Update car",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \"id\": 1,\r\n        \"name\": \"AudiQ5\",\r\n        \"location\": \"Варна\",\r\n        \"pricePerDay\": 12000.0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:8088/api/cars/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "cars",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - BMW Updated",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "{\n  \"id\": 16,\n  \"name\": \"BMW X5 Updated\",\n  \"location\": \"Бургас\",\n  \"pricePerDay\": 320.0,\n  \"status\": \"Available\"\n}",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete car",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/cars/4",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "cars",
+                                "4"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "204 No Content - BMW Deleted",
+                            "status": "No Content",
+                            "code": 204,
+                            "body": "",
+                            "header": []
+                        }
+                    ]
+                },
+                {
+                    "name": "List all BMW cars in Sofia",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/cars/by-location?location=София",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "cars",
+                                "by-location"
+                            ],
+                            "query": [
+                                {
+                                    "key": "location",
+                                    "value": "София"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - BMW Cars in Sofia",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"BMW 520d\",\n    \"location\": \"София\",\n    \"pricePerDay\": 250.0,\n    \"status\": \"Available\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"BMW X5\",\n    \"location\": \"София\",\n    \"pricePerDay\": 300.0,\n    \"status\": \"Available\"\n  }\n]",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Get details of a specific offer",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/offers/19",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "offers",
+                                "19"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - Offer Details",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "{\n  \"id\": 19,\n  \"userName\": \"Иван Петров\",\n  \"carId\": 1,\n  \"carDetails\": {\n    \"name\": \"BMW 520d\",\n    \"location\": \"София\",\n    \"pricePerDay\": 250.0\n  },\n  \"rentalDays\": 7,\n  \"totalPrice\": 1750.0,\n  \"status\": \"Pending\"\n}",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Offer",
+            "item": [
+                {
+                    "name": "Post offers",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"id\": 1,\r\n  \"userName\": \"STOQN\",\r\n  \"carId\": 2,\r\n  \"rentalDays\": 3,\r\n  \"totalPrice\": 150.0,\r\n  \"hasAccidents\": true\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:8088/api/offers",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "offers"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "201 Created - Offer Created",
+                            "status": "Created",
+                            "code": 201,
+                            "body": "{\n  \"id\": 17,\n  \"userName\": \"Георги Димитров\",\n  \"carId\": 16,\n  \"rentalDays\": 4,\n  \"totalPrice\": 1200.0,\n  \"status\": \"Pending\"\n}",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Get all offers",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/offers",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "offers"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - BMW Offer Details",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "{\n  \"id\": 17,\n  \"userName\": \"Георги Димитров\",\n  \"carId\": 16,\n  \"rentalDays\": 4,\n  \"totalPrice\": 1200.0,\n  \"status\": \"Pending\"\n}",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Get offers by Id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/offers/2",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "offers",
+                                "2"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - BMW Offer Details",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "{\n  \"id\": 17,\n  \"userName\": \"Георги Димитров\",\n  \"carId\": 16,\n  \"rentalDays\": 4,\n  \"totalPrice\": 1200.0,\n  \"status\": \"Pending\"\n}",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete offers",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/offers/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "offers",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "204 No Content - Offer Deleted",
+                            "status": "No Content",
+                            "code": 204,
+                            "body": "",
+                            "header": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Get offers by Name",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/offers/user/MARTIN",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "offers",
+                                "user",
+                                "MARTIN"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - BMW Offer Details",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "{\n  \"id\": 17,\n  \"userName\": \"Георги Димитров\",\n  \"carId\": 16,\n  \"rentalDays\": 4,\n  \"totalPrice\": 1200.0,\n  \"status\": \"Pending\"\n}",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Accept offers",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/offers/2/accept",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "offers",
+                                "2",
+                                "accept"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK - BMW Offer Accepted",
+                            "status": "OK",
+                            "code": 200,
+                            "body": "{\n  \"id\": 17,\n  \"userName\": \"Георги Димитров\",\n  \"carId\": 16,\n  \"rentalDays\": 4,\n  \"totalPrice\": 1200.0,\n  \"status\": \"Accepted\"\n}",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a new offer for a BMW",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"userName\": \"Иван Петров\",\n  \"carId\": 1,\n  \"rentalDays\": 7\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:8088/api/offers",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "offers"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "201 Created - Offer Created",
+                            "status": "Created",
+                            "code": 201,
+                            "body": "{\n  \"id\": 19,\n  \"userName\": \"Иван Петров\",\n  \"carId\": 1,\n  \"rentalDays\": 7,\n  \"totalPrice\": 1750.0,\n  \"status\": \"Pending\"\n}",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete a BMW offer",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8088/api/offers/19",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8088",
+                            "path": [
+                                "api",
+                                "offers",
+                                "19"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "204 No Content - Offer Deleted",
+                            "status": "No Content",
+                            "code": 204,
+                            "body": "",
+                            "header": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
